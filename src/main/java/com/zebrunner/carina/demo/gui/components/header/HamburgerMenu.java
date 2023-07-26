@@ -1,4 +1,4 @@
-package com.zebrunner.carina.demo.gui.components.forms;
+package com.zebrunner.carina.demo.gui.components.header;
 
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;

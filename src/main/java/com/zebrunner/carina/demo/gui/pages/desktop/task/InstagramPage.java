@@ -5,12 +5,13 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class TipUsPage extends AbstractPage {
+public class InstagramPage extends AbstractPage {
 
-    @FindBy(xpath = "//*[@class='article-info-name' and contains(text(), 'Tip us')]")
+
+    @FindBy(xpath = "//h2[contains(text(), 'gsmarenateam')]")
     private ExtendedWebElement titleText;
 
-    public TipUsPage(WebDriver driver) {
+    public InstagramPage(WebDriver driver) {
         super(driver);
     }
 

@@ -5,16 +5,16 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class TipUsPage extends AbstractPage {
+public class MerchPage extends AbstractPage {
 
-    @FindBy(xpath = "//*[@class='article-info-name' and contains(text(), 'Tip us')]")
-    private ExtendedWebElement titleText;
+    @FindBy(xpath = "//li//*[contains(@href, 'cart')]")
+    private ExtendedWebElement merchLink;
 
-    public TipUsPage(WebDriver driver) {
+    public MerchPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isTitleTextPresent() {
-        return titleText.isElementPresent();
+    public boolean isMerchLinkPresent() {
+        return merchLink.isElementPresent();
     }
 }

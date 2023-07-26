@@ -5,16 +5,16 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class TipUsPage extends AbstractPage {
+public class RssPage extends AbstractPage {
 
-    @FindBy(xpath = "//*[@class='article-info-name' and contains(text(), 'Tip us')]")
+    @FindBy(xpath = "//*[contains(text(), 'Latest articles')]")
     private ExtendedWebElement titleText;
 
-    public TipUsPage(WebDriver driver) {
+    public RssPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isTitleTextPresent() {
+    public boolean isTitlePresent() {
         return titleText.isElementPresent();
     }
 }

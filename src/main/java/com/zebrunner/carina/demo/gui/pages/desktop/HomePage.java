@@ -18,7 +18,7 @@ package com.zebrunner.carina.demo.gui.pages.desktop;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-import com.zebrunner.carina.demo.gui.components.forms.HeaderMenu;
+import com.zebrunner.carina.demo.gui.components.header.HeaderMenu;
 import com.zebrunner.carina.demo.gui.pages.common.AllBrandsPageBase;
 import com.zebrunner.carina.demo.gui.pages.common.BrandModelsPageBase;
 import com.zebrunner.carina.demo.gui.pages.common.CompareModelsPageBase;
@@ -112,7 +112,4 @@ public class HomePage extends HomePageBase {
         return userIcon.isElementPresent();
     }
 
-    public String getUrl() {
-        return driver.getCurrentUrl();
-    }
 }

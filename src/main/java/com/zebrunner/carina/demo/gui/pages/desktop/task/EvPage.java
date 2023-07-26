@@ -5,16 +5,17 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class TipUsPage extends AbstractPage {
+public class EvPage extends AbstractPage {
 
-    @FindBy(xpath = "//*[@class='article-info-name' and contains(text(), 'Tip us')]")
-    private ExtendedWebElement titleText;
+    @FindBy(xpath = "//object[contains(@data, 'arenaev')]")
+    private ExtendedWebElement logo;
 
-    public TipUsPage(WebDriver driver) {
+    public EvPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isTitleTextPresent() {
-        return titleText.isElementPresent();
+    public boolean isLogoPresent() {
+        return logo.isElementPresent();
     }
+
 }
