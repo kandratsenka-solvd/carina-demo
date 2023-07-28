@@ -15,9 +15,8 @@
  *******************************************************************************/
 package com.zebrunner.carina.demo.gui.components.footer;
 
-import com.zebrunner.carina.demo.gui.pages.desktop.CompareModelsPage;
-import com.zebrunner.carina.demo.gui.pages.desktop.HomePage;
-import com.zebrunner.carina.demo.gui.pages.desktop.NewsPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.*;
+import com.zebrunner.carina.demo.gui.pages.desktop.task.*;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -31,9 +30,36 @@ public class FooterMenu extends FooterMenuBase {
 
     @FindBy(xpath = ".//a[contains(text(),'Compare')]")
     private ExtendedWebElement compareLink;
-    
+
     @FindBy(linkText = "News")
     private ExtendedWebElement newsLink;
+
+    @FindBy(linkText = "Glossary")
+    private ExtendedWebElement glossaryLink;
+
+    @FindBy(linkText = "Reviews")
+    private ExtendedWebElement reviewsLink;
+
+    @FindBy(linkText = "Blog")
+    private ExtendedWebElement blogLink;
+
+    @FindBy(linkText = "Phone Finder")
+    private ExtendedWebElement phoneFinderLink;
+
+    @FindBy(linkText = "Tools")
+    private ExtendedWebElement toolsLink;
+
+    @FindBy(linkText = "Compare")
+    private ExtendedWebElement compareFooterLink;
+
+    @FindBy(linkText = "Coverage")
+    private ExtendedWebElement coverageLink;
+
+    @FindBy(linkText = "Contact us")
+    private ExtendedWebElement contactLink;
+
+    @FindBy(linkText = "GSMArena.com")
+    private ExtendedWebElement teamLink;
 
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -51,11 +77,74 @@ public class FooterMenu extends FooterMenuBase {
         compareLink.click();
         return new CompareModelsPage(driver);
     }
-    
+
     public NewsPage openNewsPage() {
         newsLink.scrollTo();
         newsLink.hover();
         newsLink.click();
         return new NewsPage(driver);
+    }
+
+    public ReviewsPage openReviewsPage() {
+        reviewsLink.scrollTo();
+        reviewsLink.hover();
+        reviewsLink.click();
+        return new ReviewsPage(driver);
+    }
+
+    public GlossaryPage openGlossaryPage() {
+        glossaryLink.scrollTo();
+        glossaryLink.hover();
+        glossaryLink.click();
+        return new GlossaryPage(driver);
+    }
+
+    public BlogPage openBlogPage() {
+        blogLink.scrollTo();
+        blogLink.hover();
+        blogLink.click();
+        return new BlogPage(driver);
+    }
+
+    public PhoneFinderPage openPhoneFinderPage() {
+        phoneFinderLink.scrollTo();
+        phoneFinderLink.hover();
+        phoneFinderLink.click();
+        return new PhoneFinderPage(driver);
+    }
+
+    public ToolsPage openToolsPage() {
+        toolsLink.scrollTo();
+        toolsLink.hover();
+        toolsLink.click();
+        return new ToolsPage(driver);
+    }
+
+    public ComparePage openCompareFooterPage() {
+        compareFooterLink.scrollTo();
+        compareFooterLink.hover();
+        compareFooterLink.click();
+        return new ComparePage(driver);
+    }
+
+    public CoveragePage openCoveragePage() {
+        coverageLink.scrollTo();
+        coverageLink.hover();
+        coverageLink.click();
+        return new CoveragePage(driver);
+    }
+
+    public ContactPage openContactPage() {
+        contactLink.scrollTo();
+        contactLink.hover();
+        contactLink.click();
+        return new ContactPage(driver);
+    }
+
+    public TeamPage teamPage() {
+        teamLink.scrollTo();
+        teamLink.hover();
+        teamLink.click();
+        return new TeamPage(driver);
     }
 }

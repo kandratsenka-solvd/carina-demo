@@ -1,6 +1,7 @@
 package com.zebrunner.carina.demo;
 
 import com.zebrunner.carina.core.IAbstractTest;
+import com.zebrunner.carina.demo.gui.components.footer.FooterMenu;
 import com.zebrunner.carina.demo.gui.components.header.HamburgerMenu;
 import com.zebrunner.carina.demo.gui.components.header.LoginForm;
 import com.zebrunner.carina.demo.gui.pages.desktop.*;
@@ -11,28 +12,30 @@ import org.testng.annotations.Test;
 
 public class WebTest implements IAbstractTest {
 
+    private static final String ERROR_MESSAGE_ELEMENT = "Provided element not found.";
+    private static final String ERROR_MESSAGE_LINK = "Link doesn't contain a substring.";
+    private static final String ERROR_MESSAGE_TITLE = "Title doesn't contain a substring.";
+    private static final String ERROR_MESSAGE_HOME = "Home page is not opened!";
+
     @Test
     public void testLoginForm() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
+        Assert.assertTrue(homePage.isPageOpened(), ERROR_MESSAGE_HOME);
         homePage.getHeaderMenu().getHamburgerMenu();
         LoginForm loginForm = homePage.getHeaderMenu().getLoginForm();
         loginForm.enterEmail();
         loginForm.enterPassword();
         loginForm.clickSubmitButton();
-//        Assert.assertTrue(homePage.successTextIsPresent(), "Login failed.");
         Assert.assertTrue(homePage.userIconIsPresent(), "Login failed.");
     }
 
     @Test
     public void testHeaderMenuElements() {
         WebDriver driver = getDriver();
-        String ERROR_MESSAGE_ELEMENT = "Provided element not found.";
-        String ERROR_MESSAGE_LINK = "Link doesn't contain a substring.";
         HomePage homePage = new HomePage(driver);
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
+        Assert.assertTrue(homePage.isPageOpened(), ERROR_MESSAGE_HOME);
         homePage.allElementsPresent();
         String originalWindow = driver.getWindowHandle();
         TipUsPage tipUsPage = homePage.getHeaderMenu().openTipUsPage();
@@ -50,7 +53,7 @@ public class WebTest implements IAbstractTest {
         Assert.assertTrue(instagramPage.isUrlCorrect("instagram.com"), ERROR_MESSAGE_LINK);
         Assert.assertTrue(instagramPage.titleContains("@gsmarenateam"), ERROR_MESSAGE_ELEMENT);
         driver.close();
-        driver.switchTo().window(originalWindow);//
+        driver.switchTo().window(originalWindow);
         RssPage rssPage = homePage.getHeaderMenu().openRssPage();
         homePage.switchWindow();
         Assert.assertTrue(rssPage.isUrlCorrect("gsmarena.com/rss-news"), ERROR_MESSAGE_LINK);
@@ -74,15 +77,11 @@ public class WebTest implements IAbstractTest {
         Assert.assertTrue(signupPage.titleContains("create account"), ERROR_MESSAGE_ELEMENT);
     }
 
-
     @Test
     public void testHamburgerMenu() {
-        WebDriver driver = getDriver();
-        String ERROR_MESSAGE_LINK = "Link doesn't contain a substring.";
-        String ERROR_MESSAGE_TITLE = "Title doesn't contain a substring.";
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
+        Assert.assertTrue(homePage.isPageOpened(), ERROR_MESSAGE_HOME);
         homePage.allElementsPresent();
         HamburgerMenu hamburgerMenu = homePage.getHeaderMenu().getHamburgerMenu();
         hamburgerMenu.clickHomeButton();
@@ -115,5 +114,52 @@ public class WebTest implements IAbstractTest {
         MerchPage merchPage = hamburgerMenu.clickMerchButton();
         homePage.switchWindow();
         Assert.assertTrue(merchPage.isUrlCorrect("merch"), ERROR_MESSAGE_LINK);
+    }
+
+    @Test
+    public void test() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), ERROR_MESSAGE_HOME);
+        FooterMenu footerMenu = homePage.getFooterMenu();
+        NewsPage newsPage = footerMenu.openNewsPage();
+        Assert.assertTrue(newsPage.titleContains(), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(newsPage.isUrlCorrect(), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        ReviewsPage reviewsPage = footerMenu.openReviewsPage();
+        Assert.assertTrue(reviewsPage.titleContains("reviews"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(reviewsPage.isUrlCorrect("reviews"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        GlossaryPage glossaryPage = footerMenu.openGlossaryPage();
+        Assert.assertTrue(glossaryPage.titleContains("glossary"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(glossaryPage.isUrlCorrect("glossary"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        BlogPage blogPage = footerMenu.openBlogPage();
+        Assert.assertTrue(blogPage.titleContains("blog"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(blogPage.isUrlCorrect("blog"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        PhoneFinderPage phoneFinderPage = footerMenu.openPhoneFinderPage();
+        Assert.assertTrue(phoneFinderPage.titleContains("finder"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(phoneFinderPage.isUrlCorrect("search"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        ToolsPage toolsPage = footerMenu.openToolsPage();
+        Assert.assertTrue(toolsPage.titleContains("tools"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(toolsPage.isUrlCorrect("tools"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        ComparePage comparePage = footerMenu.openCompareFooterPage();
+        Assert.assertTrue(comparePage.titleContains("compare"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(comparePage.isUrlCorrect("compare"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        CoveragePage coveragePage = footerMenu.openCoveragePage();
+        Assert.assertTrue(coveragePage.titleContains("coverage"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(coveragePage.isUrlCorrect("network"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        ContactPage contactPage = footerMenu.openContactPage();
+        Assert.assertTrue(contactPage.titleContains("contact"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(contactPage.isUrlCorrect("contact"), ERROR_MESSAGE_LINK);
+        homePage.navigateBack();
+        TeamPage teamPage = footerMenu.teamPage();
+        Assert.assertTrue(teamPage.titleContains("team"), ERROR_MESSAGE_TITLE);
+        Assert.assertTrue(teamPage.isUrlCorrect("team"), ERROR_MESSAGE_LINK);
     }
 }
