@@ -112,4 +112,12 @@ public class HomePage extends HomePageBase {
         return userIcon.isElementPresent();
     }
 
+    public boolean titleContains() {
+        return driver.getTitle().toLowerCase().contains("news, specifications");
+    }
+
+    public boolean isUrlCorrect() {
+        return driver.getCurrentUrl().equalsIgnoreCase("https://www.gsmarena.com/");
+    }
+
 }

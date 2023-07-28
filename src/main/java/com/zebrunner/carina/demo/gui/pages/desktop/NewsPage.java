@@ -54,5 +54,12 @@ public class NewsPage extends NewsPageBase {
         searchButton.click();
         return news;
     }
-    
+
+    public boolean titleContains() {
+        return driver.getTitle().toLowerCase().contains("news");
+    }
+
+    public boolean isUrlCorrect() {
+        return driver.getCurrentUrl().toLowerCase().contains("news");
+    }
 }
