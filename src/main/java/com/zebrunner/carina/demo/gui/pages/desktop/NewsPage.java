@@ -59,7 +59,7 @@ public class NewsPage extends NewsPageBase {
         return driver.getTitle().toLowerCase().contains("news");
     }
 
-    public boolean isUrlCorrect() {
+    public boolean urlContains() {
         return driver.getCurrentUrl().toLowerCase().contains("news");
     }
 }

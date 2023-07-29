@@ -16,7 +16,7 @@
 package com.zebrunner.carina.demo.gui.components.footer;
 
 import com.zebrunner.carina.demo.gui.pages.desktop.*;
-import com.zebrunner.carina.demo.gui.pages.desktop.task.*;
+import com.zebrunner.carina.demo.gui.pages.desktop.internal.*;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -69,6 +69,12 @@ public class FooterMenu extends FooterMenuBase {
     public HomePage openHomePage() {
         homeLink.click();
         return new HomePage(driver);
+    }
+
+    public void scrollHoverClick(ExtendedWebElement element) {
+        element.scrollTo();
+        element.hover();
+        element.click();
     }
 
     public CompareModelsPage openComparePage() {

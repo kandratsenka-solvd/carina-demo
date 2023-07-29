@@ -1,6 +1,12 @@
 package com.zebrunner.carina.demo.gui.components.header;
 
-import com.zebrunner.carina.demo.gui.pages.desktop.task.*;
+import com.zebrunner.carina.demo.gui.pages.desktop.external.EvPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.external.InstagramPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.external.YouTubePage;
+import com.zebrunner.carina.demo.gui.pages.desktop.internal.MerchPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.internal.RssPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.internal.SignupPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.internal.TipUsPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 

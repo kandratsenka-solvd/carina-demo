@@ -1,7 +1,7 @@
 package com.zebrunner.carina.demo.gui.components.header;
 
 import com.zebrunner.carina.demo.gui.pages.desktop.*;
-import com.zebrunner.carina.demo.gui.pages.desktop.task.MerchPage;
+import com.zebrunner.carina.demo.gui.pages.desktop.internal.*;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
